@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Redirect</title>
+    <!-- Include the qrcode.js library -->
+    <script src="qrcode.min (1).js"></script>
+  </head>
+  <body>
+    <h1>Scan the QR Code to Reveal the Riddle</h1>
+    <div id="qr-code"></div>
+
+    <script>
+      function generateQR(riddleNumber) {
+        var input = "https://example.com/riddle" + riddleNumber + ".html"; // URL of the page with the riddle
+        // Clear previous QR code if any
+        document.getElementById("qr-code").innerHTML = "";
+
+        // Generate QR code
+        var qr = new QRCode(document.getElementById("qr-code"), {
+          text: input,
+          width: 256,
+          height: 256,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
+      }
+
+      // Generate QR code initially with the first riddle
+      generateQR(1);
+    </script>
+  </body>
+</html>

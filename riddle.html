@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riddle Page</title>
+  </head>
+  <body>
+    <h1>Riddle:</h1>
+    <p>What has a head, a tail, is brown, and has no legs?</p>
+
+    <!-- Form to input the answer -->
+    <form id="answer-form">
+      <label for="answer">Enter your answer:</label>
+      <input type="text" id="answer" name="answer" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("answer-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission behavior
+
+          // Get the entered answer
+          var userAnswer = document
+            .getElementById("answer")
+            .value.trim()
+            .toLowerCase();
+
+          // Correct answer
+          var correctAnswer = "coin";
+
+          // Validate the answer
+          if (userAnswer === correctAnswer) {
+            // Display success message
+            alert("Congratulations! You've solved the riddle.");
+
+            // Generate a new QR code for the next riddle
+            generateNextQR();
+          } else {
+            // Display error message
+            alert("Incorrect answer. Please try again.");
+          }
+        });
+
+      // Function to generate a new QR code for the next riddle
+      function generateNextQR() {
+        // Assuming you have multiple riddles, increment the riddle number
+        // and generate QR code for the next riddle
+        var nextRiddleNumber = 2; // For example, for the second riddle
+        generateQR(nextRiddleNumber);
+      }
+
+      // Function to generate a QR code
+      function generateQR(riddleNumber) {
+        var input = "https://example.com/riddle" + riddleNumber + ".html"; // URL of the page with the riddle
+        // Redirect to the riddle page where the new QR code will be displayed
+        window.location.href = input;
+      }
+    </script>
+  </body>
+</html>
